@@ -1,10 +1,7 @@
 from pytube import YouTube
 import pyperclip
 from termcolor import colored
-import time
-import sys
-import threading
-import itertools
+from tkinter.filedialog import askdirectory
 
 
 print('''-----------------
@@ -32,3 +29,5 @@ print(colored(f"{video.title}", "red", attrs=["bold", "reverse"]))
 print(lines*80)
 print(colored("Download video (Y / N):", "cyan", attrs=["bold"]))
 do_download = input(colored(">> ", "yellow", attrs=["bold"])).lower()
+if do_download == "y":
+    video_save_path = askdirectory(title='Select Folder To Save')
