@@ -2,11 +2,9 @@ from pytube import YouTube
 import pyperclip
 from termcolor import colored
 from tkinter.filedialog import askdirectory
+from resources import logo
 
-
-print('''-----------------
-| PY-DOWN-TUBE  |
------------------''')
+print(logo)
       
 lines = colored("-", "green", attrs=["bold"])
 print(lines*80)
