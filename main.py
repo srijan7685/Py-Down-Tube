@@ -1,6 +1,10 @@
 from pytube import YouTube
 import pyperclip
 from termcolor import colored
+import time
+import sys
+import threading
+import itertools
 
 
 print('''-----------------
@@ -26,5 +30,5 @@ print(lines*80)
 video = YouTube(vd_link)
 print(colored(f"{video.title}", "red", attrs=["bold", "reverse"]))
 print(lines*80)
-print(colored("Download video (Y / N):", "cyan", attrs=["bold"])).lower()
-do_download = input(colored(">> ", "yellow", attrs=["bold"]))
+print(colored("Download video (Y / N):", "cyan", attrs=["bold"]))
+do_download = input(colored(">> ", "yellow", attrs=["bold"])).lower()
