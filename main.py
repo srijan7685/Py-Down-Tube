@@ -1,18 +1,30 @@
-import os.path
 from pytube import YouTube
 import pyperclip
+from termcolor import colored
 
-print("Go & Copy Your Link First !!!")
-link = pyperclip.waitFornPaste()
-print("Your Song Title:")
-print("_"*100)
-video = YouTube(link)
-print(video.title)
-print("_"*100)
-correct = input("Proceed ? (y / n):\n>> ").lower()
-if correct == "y":
-    dir = input("Choose Your Directory To Save Video:\n>> ")
-    stream = video.streams.get_highest_resolution()
-    output = stream.download()
-    video_path = os.path(dir, output)
-    final_video = open(video_path, "w")
+
+print('''-----------------
+| PY-DOWN-TUBE  |
+-----------------''')
+      
+lines = colored("-", "green", attrs=["bold"])
+print(lines*80)
+
+options = {
+    "1" : "Paste Link From Clipboard",
+    "2" : "Copy New Link To Clipboard"
+}
+print(colored("Choose Your Options:", "cyan", attrs=["bold"]))
+for items in options:
+    print(f"{items} : {options[items]}")
+user_option = input(colored(">> ", "yellow", attrs=["bold"]))
+if user_option == "1":
+    vd_link = pyperclip.waitForPaste()
+else:
+    vd_link = pyperclip.waitForNewPaste()
+print(lines*80)
+video = YouTube(vd_link)
+print(colored(f"{video.title}", "red", attrs=["bold", "reverse"]))
+print(lines*80)
+print(colored("Download video (Y / N):", "cyan", attrs=["bold"]))
+do_download = input(colored(">> ", "yellow", attrs=["bold"]))
