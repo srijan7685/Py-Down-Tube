@@ -29,3 +29,6 @@ print(colored("Download video (Y / N):", "cyan", attrs=["bold"]))
 do_download = input(colored(">> ", "yellow", attrs=["bold"])).lower()
 if do_download == "y":
     video_save_path = askdirectory(title='Select Folder To Save')
+    final_video = video.streams.get_highest_resolution()
+    final_video.download(video_save_path)
+    print(colored("Download Successful", "green", attrs=["bold", "reverse"]))
